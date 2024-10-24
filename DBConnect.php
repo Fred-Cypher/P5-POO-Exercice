@@ -1,8 +1,8 @@
 <?php
 
 
-class DBConnect{
-
+class DBConnect
+{
     private static $instance = null;
     private $pdo;
 
@@ -10,7 +10,7 @@ class DBConnect{
     {
         $this->pdo = new PDO('mysql:host=' . $_ENV["DB_HOST"] .';dbname=' . $_ENV["DB_NAME"], "DB_USER", "DB_PASSWORD");
     }
-  
+
     public static function getInstance(): DBConnect
     {
         if (self::$instance == null) {
