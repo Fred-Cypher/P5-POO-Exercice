@@ -1,5 +1,7 @@
 <?php
 
+// Inclut le fichier avec les constantes pour la connexion
+require 'config.php';
 
 class DBConnect
 {
@@ -8,7 +10,17 @@ class DBConnect
 
     public function __construct()
     {
-        $this->pdo = new PDO('mysql:host=' . $_ENV["DB_HOST"] .';dbname=' . $_ENV["DB_NAME"], "DB_USER", "DB_PASSWORD");
+        try {
+            // Initialise PDO avec les constantes
+            $this->pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            // Message de succès pour la connexion
+            echo "Connexion réussie à la base de données.<br>";
+        } catch (PDOException $e) {
+            // Affiche une erreur en cas de problème de connexion
+            echo "Erreur de connexion : " . $e->getMessage();
+        }
     }
 
     public static function getInstance(): DBConnect
@@ -16,11 +28,12 @@ class DBConnect
         if (self::$instance == null) {
             self::$instance = new DBConnect();
         }
+
         return self::$instance;
     }
 
-    public function getPDO()
+    public function getPDO(): PDO
     {
         return $this->pdo;
     }
-} 
+}
