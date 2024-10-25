@@ -28,10 +28,7 @@ class Contact
 
     public function __toString()
     {
-        return $this->id;
-        return $this->name;
-        return $this->email;
-        return $this->telephone;
+        return $this->id . ", " . $this->name . ", " . $this->email . ", " . $this->telephone . "\n";
     }
 
     /**

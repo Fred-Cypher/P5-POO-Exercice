@@ -10,7 +10,7 @@ while (true) {
         $contacts = $contactManager->findAll();
 
         foreach($contacts as $contact){
-            echo $contact->getId() . ', ' . $contact->getName() . ', ' . $contact->getEmail() . ', ' . $contact->getTelephone(). "\n";
+            echo $contact->__toString();
         }
     }
 }
