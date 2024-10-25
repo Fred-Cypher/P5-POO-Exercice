@@ -18,7 +18,7 @@ class Contact
      * @param  mixed $telephone
      * @return void
      */
-    public function __construct($id, $name, $email, $telephone)
+    public function __construct($id = null, $name = null, $email = null, $telephone = null)
     {
         $this->id = $id;
         $this->name = $name;

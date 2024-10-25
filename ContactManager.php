@@ -1,6 +1,7 @@
 <?php
 
 require 'DBConnect.php'; 
+require 'Contact.php';
 
 $db = DBConnect::getInstance()->getPDO();
 
@@ -18,8 +19,14 @@ class ContactManager
         $query = $this->db->prepare("SELECT * FROM contact");
         $query->execute();
 
-        $contacts = [];
+        $contacts = $query->fetchAll();
 
-        return $contacts;
+        $result = [];
+
+        foreach($contacts as $contact){
+            $result[]= new Contact($contact['id'], $contact['name'], $contact['email'], $contact['telephone']);
+        }
+
+        return $result;
     }
 }
