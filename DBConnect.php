@@ -16,7 +16,7 @@ class DBConnect
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Message de succès pour la connexion
-            echo "Connexion réussie à la base de données.";
+            echo "Connexion réussie à la base de données. \n";
         } catch (PDOException $e) {
             // Affiche une erreur en cas de problème de connexion
             echo "Erreur de connexion : " . $e->getMessage();
