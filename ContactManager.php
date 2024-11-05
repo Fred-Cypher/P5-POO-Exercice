@@ -29,4 +29,16 @@ class ContactManager
 
         return $result;
     }
+
+    public function findById(int $id): ?Contact
+    {
+        $query = $this->db->prepare("SELECT * FROM contact WHERE id = :id");
+        $query->execute(['id' => $id]);
+
+        $contact = $query->fetch(PDO::FETCH_ASSOC);
+
+        $contact = Contact::fromContactsArray($contact);
+
+        return $contact;
+    }
 }

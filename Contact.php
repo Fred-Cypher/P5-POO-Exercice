@@ -1,13 +1,11 @@
 <?php
 
-require_once('DBConnect.php');
-
 class Contact
 {
-    private int $id;
-    private string $name;
-    private string $email;
-    private string $telephone;
+    private ?int $id;
+    private ?string $name;
+    private ?string $email;
+    private ?string $telephone;
         
     /**
      * __construct
@@ -112,5 +110,16 @@ class Contact
     public function setTelephone($telephone) : void 
     {
         $this->telephone = $telephone;
+    }
+
+    public static function fromContactsArray(array $array): Contact
+    {
+        $contact = new Contact();
+        $contact->setId($array['id']);
+        $contact->setName($array['name']);
+        $contact->setEmail($array['email']);
+        $contact->setTelephone($array['telephone']);
+
+        return $contact;
     }
 }

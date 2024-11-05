@@ -9,4 +9,10 @@ while (true) {
 
         echo $command->list();
     }
+
+    if (preg_match("/^detail (.*)$/", $line, $matches)) {
+        $command = new Command;
+
+        echo $command->detail($matches[1]);
+    }
 }

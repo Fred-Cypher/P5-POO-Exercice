@@ -19,4 +19,10 @@ class Command
             echo $contact->__toString();
         }
     }
+
+    public function detail($id) : void
+    {
+        $contact = $this->contactManager->findById($id);
+        echo $contact->__toString();
+    } 
 }
