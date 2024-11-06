@@ -41,4 +41,15 @@ class ContactManager
 
         return $contact;
     }
+
+    public function newContact(string $name, string $email, string $telephone): Contact
+    {
+        $query = $this->db->prepare("INSERT INTO contact (name, email, telephone) values (:name, :email, :telephone)");
+        
+        $query->execute(["name" => $name, "email" => $email, "telephone" => $telephone]);
+
+        $id = $this->db->lastInsertId();
+
+        return $this->findById($id);
+    }
 }

@@ -15,4 +15,10 @@ while (true) {
 
         echo $command->detail($matches[1]);
     }
+
+    if (preg_match("/^create (.*), (.*), (.*)$/", $line, $matches)){
+        $command = new Command;
+
+        echo $command->create($matches[1], $matches[2], $matches[3]);
+    }
 }

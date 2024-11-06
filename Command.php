@@ -25,4 +25,11 @@ class Command
         $contact = $this->contactManager->findById($id);
         echo $contact->__toString();
     } 
+
+    public function create($name, $email, $telephone): void
+    {
+        $contact = $this->contactManager->newContact($name, $email, $telephone);
+
+        echo "Nouveau contact créé avec succès \n";
+    }
 }
