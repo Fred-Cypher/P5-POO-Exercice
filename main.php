@@ -1,4 +1,5 @@
 <?php
+
 require('Command.php');
 
 while (true) {
@@ -20,5 +21,11 @@ while (true) {
         $command = new Command;
 
         echo $command->create($matches[1], $matches[2], $matches[3]);
+    }
+
+    if (preg_match("/^delete (.*)$/", $line, $matches)){
+        $command = new Command;
+
+        echo $command->delete($matches[1]);
     }
 }

@@ -52,4 +52,11 @@ class ContactManager
 
         return $this->findById($id);
     }
+
+    public function deleteContact(int $id): void
+    {
+        $query = $this->db->prepare("DELETE FROM contact WHERE id = :id");
+
+        $query->execute(['id' => $id]);
+    }
 }

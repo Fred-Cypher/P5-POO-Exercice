@@ -30,6 +30,13 @@ class Command
     {
         $contact = $this->contactManager->newContact($name, $email, $telephone);
 
-        echo "Nouveau contact créé avec succès \n";
+        echo "Nouveau contact créé avec succès \n" . $contact->__toString();
+    }
+
+    public function delete($id): void
+    {
+        $this->contactManager->deleteContact($id);
+
+        echo "Le contact a bien été supprimé \n";
     }
 }
