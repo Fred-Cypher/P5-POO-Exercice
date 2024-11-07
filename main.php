@@ -3,7 +3,7 @@
 require('Command.php');
 
 while (true) {
-    $line = readline("Entrez votre commande : ");
+    $line = readline("Entrez votre commande (help, list, detail, create, delete, quit) : ");
 
     if ($line == 'list'){
         $command = new Command;
@@ -27,5 +27,15 @@ while (true) {
         $command = new Command;
 
         echo $command->delete($matches[1]);
+    }
+
+    if ($line == 'help'){
+        $command = new Command;
+
+        echo $command->help();
+    }
+
+    if($line == 'quit'){
+        break;
     }
 }
