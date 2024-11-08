@@ -8,6 +8,9 @@ class DBConnect
     private static $instance = null;
     private $pdo;
 
+    /**
+     * Constructeur de la class qui permet la connexion à la base de données
+     */
     public function __construct()
     {
         try {
@@ -23,6 +26,11 @@ class DBConnect
         }
     }
 
+    /**
+     * Instanciation de la class pour permettre la connexion à la base de données à partir des autres fichiers
+     *
+     * @return DBConnect
+     */
     public static function getInstance(): DBConnect
     {
         if (self::$instance == null) {
@@ -32,6 +40,11 @@ class DBConnect
         return self::$instance;
     }
 
+    /**
+     * Création d'un objet PDO pour les requêtes à la base de données
+     *
+     * @return PDO
+     */
     public function getPDO(): PDO
     {
         return $this->pdo;

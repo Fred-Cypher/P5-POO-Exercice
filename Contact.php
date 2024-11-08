@@ -6,9 +6,9 @@ class Contact
     private ?string $name;
     private ?string $email;
     private ?string $telephone;
-        
+
     /**
-     * __construct
+     * __construct, contructeur de la classe contact
      *
      * @param  mixed $id
      * @param  mixed $name
@@ -24,6 +24,11 @@ class Contact
         $this->telephone = $telephone;
     }
 
+    /**
+     * Permet d'afficher un contact sous forme de chaîne de caractère
+     *
+     * @return string
+     */
     public function __toString()
     {
         return $this->id . ", " . $this->name . ", " . $this->email . ", " . $this->telephone . "\n";
@@ -38,7 +43,7 @@ class Contact
     {
         return $this->id;
     }
-    
+
     /**
      * setId
      *
@@ -49,7 +54,7 @@ class Contact
     {
         $this->id = $id;
     }
-    
+
     /**
      * getName
      *
@@ -59,7 +64,7 @@ class Contact
     {
         return $this->name;
     }
-    
+
     /**
      * setName
      *
@@ -70,17 +75,17 @@ class Contact
     {
         $this->name = $name;
     }
-    
+
     /**
      * getEmail
      *
      * @return string
      */
-    public function getEmail(): ?string 
+    public function getEmail(): ?string
     {
         return $this->email;
     }
-    
+
     /**
      * setEmail
      *
@@ -91,7 +96,7 @@ class Contact
     {
         $this->email = $email;
     }
-    
+
     /**
      * getTelephone
      *
@@ -101,17 +106,23 @@ class Contact
     {
         return $this->telephone;
     }
-    
+
     /**
      * setTelephone
      *
      * @return void
      */
-    public function setTelephone($telephone) : void 
+    public function setTelephone($telephone): void
     {
         $this->telephone = $telephone;
     }
 
+    /**
+     * Permet de créer un contact
+     *
+     * @param array $array
+     * @return Contact
+     */
     public static function fromContactsArray(array $array): Contact
     {
         $contact = new Contact();
